@@ -2,35 +2,35 @@
 <html lang="ms">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Affiliate @anasnide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>@anasnide | TikTok Affiliate</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="light">
-  <div class="container">
-    <header>
-      <div class="header-top">
-        <h1>@anasnide Affiliate Shop</h1>
-        <button id="theme-toggle">Tukar Tema</button>
-      </div>
-      <p>Produk trending TikTok khas untuk anda</p>
-
-      <div class="dropdown">
-        <label for="kategori">Pilih Kategori:</label>
-        <select id="kategori">
-          <option selected disabled>Memuat kategori...</option>
-        </select>
-      </div>
+  <div class="app-container">
+    <header class="top-bar">
+      <h1>@anasnide</h1>
+      <button id="theme-toggle">🌙</button>
     </header>
 
-    <section class="products" id="product-container">
-      <!-- Produk akan dimasukkan secara automatik -->
-    </section>
+    <div class="kategori-filter">
+      <select id="kategori">
+        <option selected disabled>Memuat kategori...</option>
+      </select>
+    </div>
 
-    <footer>
-      <p>© 2025 Anas Nidir</p>
-    </footer>
+    <main id="product-container" class="produk-grid">
+      <!-- Produk dimuatkan di sini -->
+    </main>
+
+    <nav class="bottom-nav">
+      <a href="#">Utama</a>
+      <a href="#">Trending</a>
+      <a href="#">Kategori</a>
+      <a href="#">Profil</a>
+    </nav>
   </div>
+
   <script src="scripts/main.js"></script>
 </body>
 </html>
