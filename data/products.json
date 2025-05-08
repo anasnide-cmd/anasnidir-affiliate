@@ -1,0 +1,34 @@
+{
+  "products": [
+    {
+      "nama": "Tudung Instant Moden",
+      "kategori": "Fesyen Wanita",
+      "gambar": "https://via.placeholder.com/200",
+      "link": "https://tiktok.com/@anasnide"
+    },
+    {
+      "nama": "Baju Oversize Lelaki",
+      "kategori": "Fesyen Lelaki",
+      "gambar": "https://via.placeholder.com/200",
+      "link": "https://tiktok.com/@anasnide"
+    },
+    {
+      "nama": "Face Serum Organik",
+      "kategori": "Kecantikan & Penjagaan Diri",
+      "gambar": "https://via.placeholder.com/200",
+      "link": "https://tiktok.com/@anasnide"
+    },
+    {
+      "nama": "Smartwatch Kesihatan",
+      "kategori": "Kesihatan",
+      "gambar": "https://via.placeholder.com/200",
+      "link": "https://tiktok.com/@anasnide"
+    },
+    {
+      "nama": "Earbuds Bluetooth",
+      "kategori": "Elektronik",
+      "gambar": "https://via.placeholder.com/200",
+      "link": "https://tiktok.com/@anasnide"
+    }
+  ]
+}
