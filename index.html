@@ -3,27 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>@anasnide | TikTok Affiliate</title>
+  <title>@anasnide | Eksklusif Affiliate</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body class="light">
   <div class="app-container">
-    <header class="top-bar">
-      <h1>@anasnide</h1>
-      <button id="theme-toggle">🌙</button>
+    <!-- Header -->
+    <header class="top-bar luxury">
+      <h1 class="brand">@anasnide</h1>
+      <button id="theme-toggle" title="Tukar Tema">🌗</button>
     </header>
 
-    <div class="kategori-filter">
+    <!-- Filter Kategori -->
+    <section class="kategori-filter">
+      <label for="kategori" class="filter-label">Pilih Kategori:</label>
       <select id="kategori">
         <option selected disabled>Memuat kategori...</option>
       </select>
-    </div>
+    </section>
 
-    <main id="product-container" class="produk-grid">
-      <!-- Produk dimuatkan di sini -->
+    <!-- Senarai Produk -->
+    <main id="product-container" class="produk-grid luxury-grid">
+      <!-- Produk akan dipaparkan di sini -->
     </main>
 
-    <nav class="bottom-nav">
+    <!-- Bottom Nav -->
+    <nav class="bottom-nav luxury-nav">
       <a href="#">Utama</a>
       <a href="#">Trending</a>
       <a href="#">Kategori</a>
