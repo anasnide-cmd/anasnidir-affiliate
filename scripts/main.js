@@ -1,3 +1,4 @@
+// Kod baru dalam main.js
 document.addEventListener("DOMContentLoaded", () => {
   const kategoriSelect = document.getElementById("kategori");
   const productContainer = document.getElementById("product-container");
@@ -41,6 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Paparkan produk dengan animasi harga
   function paparProduk(list) {
     productContainer.innerHTML = "";
     if (list.length === 0) {
@@ -54,9 +56,30 @@ document.addEventListener("DOMContentLoaded", () => {
       card.innerHTML = `
         <img src="${p.gambar}" alt="${p.nama}">
         <h3>${p.nama}</h3>
+        <p class="harga" id="harga-${p.id}">RM ${p.harga}</p>
         <a href="${p.link}" target="_blank">Beli</a>
       `;
       productContainer.appendChild(card);
+
+      // Animasi harga
+      animateCount(`harga-${p.id}`, p.harga);
     });
+  }
+
+  // Fungsi animasi harga
+  function animateCount(id, value) {
+    const element = document.getElementById(id);
+    let start = 0;
+    const end = value;
+    const duration = 2000; // 2 seconds
+    const stepTime = Math.abs(Math.floor(duration / end));
+
+    const timer = setInterval(() => {
+      start += 1;
+      element.textContent = "RM " + start.toLocaleString();
+      if (start >= end) {
+        clearInterval(timer);
+      }
+    }, stepTime);
   }
 });
