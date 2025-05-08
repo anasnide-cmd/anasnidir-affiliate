@@ -1,20 +1,60 @@
-// Load kategori dari JSON
 document.addEventListener("DOMContentLoaded", () => {
+  const kategoriSelect = document.getElementById("kategori");
+  const productContainer = document.getElementById("product-container");
+  let semuaProduk = [];
+
+  // Load kategori
   fetch("data/categories.json")
-    .then((res) => res.json())
-    .then((data) => {
-      const select = document.getElementById("kategori");
-      select.innerHTML = '<option selected disabled>Pilih kategori produk</option>';
-      data.categories.forEach((item) => {
+    .then(res => res.json())
+    .then(data => {
+      kategoriSelect.innerHTML = '<option value="semua">Semua Kategori</option>';
+      data.categories.forEach(kategori => {
         const opt = document.createElement("option");
-        opt.textContent = item;
-        select.appendChild(opt);
+        opt.value = kategori;
+        opt.textContent = kategori;
+        kategoriSelect.appendChild(opt);
       });
     });
 
-  // Theme toggle
-  const toggleBtn = document.getElementById("theme-toggle");
-  toggleBtn.addEventListener("click", () => {
+  // Load produk
+  fetch("data/products.json")
+    .then(res => res.json())
+    .then(data => {
+      semuaProduk = data.products;
+      paparProduk(semuaProduk);
+    });
+
+  // Tukar tema
+  document.getElementById("theme-toggle").addEventListener("click", () => {
     document.body.classList.toggle("dark");
   });
+
+  // Bila kategori berubah
+  kategoriSelect.addEventListener("change", () => {
+    const kategoriDipilih = kategoriSelect.value;
+    if (kategoriDipilih === "semua") {
+      paparProduk(semuaProduk);
+    } else {
+      const tapisProduk = semuaProduk.filter(p => p.kategori === kategoriDipilih);
+      paparProduk(tapisProduk);
+    }
+  });
+
+  function paparProduk(produkList) {
+    productContainer.innerHTML = "";
+    if (produkList.length === 0) {
+      productContainer.innerHTML = "<p>Tiada produk dalam kategori ini.</p>";
+      return;
+    }
+    produkList.forEach(p => {
+      const card = document.createElement("div");
+      card.className = "product-card";
+      card.innerHTML = `
+        <img src="${p.gambar}" alt="${p.nama}" />
+        <h3>${p.nama}</h3>
+        <a href="${p.link}" class="btn" target="_blank">Beli Sekarang</a>
+      `;
+      productContainer.appendChild(card);
+    });
+  }
 });
