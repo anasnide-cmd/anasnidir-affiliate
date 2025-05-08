@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const productContainer = document.getElementById("product-container");
   let semuaProduk = [];
 
-  // Load kategori
+  // Muat kategori
   fetch("data/categories.json")
     .then(res => res.json())
     .then(data => {
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-  // Load produk
+  // Muat produk
   fetch("data/products.json")
     .then(res => res.json())
     .then(data => {
@@ -27,32 +27,34 @@ document.addEventListener("DOMContentLoaded", () => {
   // Tukar tema
   document.getElementById("theme-toggle").addEventListener("click", () => {
     document.body.classList.toggle("dark");
+    document.body.classList.toggle("light");
   });
 
-  // Bila kategori berubah
+  // Bila kategori dipilih
   kategoriSelect.addEventListener("change", () => {
-    const kategoriDipilih = kategoriSelect.value;
-    if (kategoriDipilih === "semua") {
+    const dipilih = kategoriSelect.value;
+    if (dipilih === "semua") {
       paparProduk(semuaProduk);
     } else {
-      const tapisProduk = semuaProduk.filter(p => p.kategori === kategoriDipilih);
-      paparProduk(tapisProduk);
+      const tapis = semuaProduk.filter(p => p.kategori === dipilih);
+      paparProduk(tapis);
     }
   });
 
-  function paparProduk(produkList) {
+  function paparProduk(list) {
     productContainer.innerHTML = "";
-    if (produkList.length === 0) {
-      productContainer.innerHTML = "<p>Tiada produk dalam kategori ini.</p>";
+    if (list.length === 0) {
+      productContainer.innerHTML = "<p>Tiada produk dijumpai.</p>";
       return;
     }
-    produkList.forEach(p => {
+
+    list.forEach(p => {
       const card = document.createElement("div");
       card.className = "product-card";
       card.innerHTML = `
-        <img src="${p.gambar}" alt="${p.nama}" />
+        <img src="${p.gambar}" alt="${p.nama}">
         <h3>${p.nama}</h3>
-        <a href="${p.link}" class="btn" target="_blank">Beli Sekarang</a>
+        <a href="${p.link}" target="_blank">Beli</a>
       `;
       productContainer.appendChild(card);
     });
